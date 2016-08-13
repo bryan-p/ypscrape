@@ -1,10 +1,9 @@
 import os, requests, bs4, re, csv, datetime
 
-url = "http://www.yellowpages.com"
+fqdn = "http://www.yellowpages.com"
 category = ""
 zipcode = ""
 
-def paginate():
 
 def get_company_info(results):
     companies = {}
@@ -70,8 +69,8 @@ def save_csv(companies):
             writer.writerow([key, companies[key]["phone"], companies[key]["street"], companies[key]["city"], companies[key]["state"], companies[key]["zip"]])
 
 
-urlquery = get_input()
-response = requests.get(url+urlquery)
+query = get_input()
+response = requests.get(fqdn+query)
 soup = bs4.BeautifulSoup(response.text, 'html.parser')
 search_results = soup.find_all('div', id=re.compile('lid-*'))
 
