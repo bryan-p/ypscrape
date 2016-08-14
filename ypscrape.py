@@ -4,7 +4,6 @@ fqdn = "http://www.yellowpages.com"
 filename = ""
 category = ""
 zipcode = ""
-pages = 0
 companies = {}
 
 def get_company_info(results):
@@ -56,12 +55,9 @@ def get_company_info(results):
 def get_input():
     global category     
     global zipcode
-    global pages
 
     category = raw_input("Search Term: ").strip()
     zipcode = raw_input("Zip Code: ").strip()
-    pages = raw_input("max number pages to search [ 0 for no max]: ").strip()
-    pages = int(pages)
     urlquery = "/search?search_terms=" + category + "&geo_location_terms=" + zipcode 
 
     print("Scraping data for '{}' in zip code '{}'...").format(category, zipcode)
