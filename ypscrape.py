@@ -71,7 +71,7 @@ def save():
         writer = csv.writer(toWrite, delimiter=",")
         writer.writerow(["name", "phone", "street", "city", "state", "zip"])
         for key in companies.keys():
-            writer.writerow([key, companies[key]["phone"], companies[key]["street"], companies[key]["city"], companies[key]["state"], companies[key]["zip"]])
+            writer.writerow([key, companies[key].get("phone", ""), companies[key].get("street"), companies[key].get("city", ""), companies[key].get("state", ""), companies[key].get("zip", "")])
 
 query = get_input()
 
